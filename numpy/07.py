@@ -98,3 +98,43 @@ print(a)
 print(b)
 print(c)
 print(d)
+
+print('--------5.1 repeat —— 针对元素---------------')
+
+arr=np.arange(4)
+print(arr)
+
+print(np.repeat(arr,2))
+# 指定每个元素的重复次数
+# 0重复2次，1重复3次，2重复4次，3重复5次
+print(np.repeat(arr,[2,3,4,5]))
+#多维数组repeat
+ndarr=np.arange(6).reshape(2,3)
+print(ndarr)
+#不指定轴会被扁平化
+print(np.repeat(ndarr,2))
+print(np.repeat(ndarr,2,axis=0))
+print(np.repeat(ndarr,2,axis=1))
+
+print('------5.2 tile ———— 针对整个数组----')
+print(ndarr)
+
+# 对标量是横向扩展
+print(np.tile(ndarr,2))
+
+print(np.tile(ndarr,(1,2)))
+print(np.tile(ndarr,(2,3)))
+
+print('-------------------------------------')
+'''
+6、数组转置和轴对换
+转置和轴对换返回的是原对象的视图，不是新对象
+'''
+arr=np.arange(12).reshape(3,4)
+print(arr)
+print(arr.T)
+print(arr.transpose())
+
+print(arr)
+arr.T[:2]=0
+print(arr)
