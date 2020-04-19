@@ -64,9 +64,9 @@ print(result2)
 print(np.fromfunction(lambda i,j:i+j,(2,3)))
 
 '''
-np.fromfile(file, dtype=float, count=-1, sep='')
+np.fromfile(files, dtype=float, count=-1, sep='')
 
-file：要打开的文件对象或者文件名
+files：要打开的文件对象或者文件名
 dtype：返回数组的数据类型。对于二进制文件，
 它用于确定文件中项目的大小和字节顺序。
 错误的数据类型会返回错误的数据
@@ -79,4 +79,4 @@ sep：如果文件是文本文件，
 '''
 print(np.fromfile('./file/fromfile'))
 
-print(np.arange(12).tofile('./file/fromfile'))
+print(np.arange(12).tofile('./files/fromfile'))

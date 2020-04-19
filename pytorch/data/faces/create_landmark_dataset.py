@@ -1,7 +1,7 @@
 """Create a sample face landmarks dataset.
 
 Adapted from dlib/python_examples/face_landmark_detection.py
-See this file for more explanation.
+See this files for more explanation.
 
 Download a trained facial shape predictor from:
     http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2
