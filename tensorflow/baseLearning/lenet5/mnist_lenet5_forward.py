@@ -35,11 +35,13 @@ def max_pool_2x2(x):
     # strides卷积核滑动步长
     return tf.nn.max_pool(x, ksize=[1, 2, 2, 1], strides=[1, 2, 2, 1], padding='SAME')
 
-
+#给出前向传播的网络结构
 def forward(x,train,regularizer):
+    #卷积核conv1_w
     conv1_w=get_weight([CONV1_SIZE,CONV1_SIZE,NUM_CHANNELS,CONV1_KERNEL_NUM],regularizer)
     conv1_b=get_bias([CONV1_KERNEL_NUM])
     conv1=conv2d(x,conv1_w)
+    #添加偏置
     relu1=tf.nn.relu(tf.nn.bias_add(conv1,conv1_b))
     pool1=max_pool_2x2(relu1)
 
@@ -50,13 +52,15 @@ def forward(x,train,regularizer):
     pool2 = max_pool_2x2(relu2)
 
     pool_shape=pool2.get_shape().as_list()
-    #提取特征的长度，宽度，深度
+    #提取特征的长度，宽度，深度，所有特征点的个数
     nodes=pool_shape[1] * pool_shape[2]*pool_shape[3]
+    #二维形状
     reshaped=tf.reshape(pool2,[pool_shape[0],nodes])
 
     fc1_w=get_weight([nodes,FC_SIZE],regularizer)
     fc1_b=get_bias([FC_SIZE])
     fc1=tf.nn.relu(tf.matmul(reshaped,fc1_w)+fc1_b)
+    #百分之五十的dropout
     if train: fc1 =tf.nn.dropout(fc1,0.5)
 
     fc2_w = get_weight([FC_SIZE,OUTPUT_NODE], regularizer)
