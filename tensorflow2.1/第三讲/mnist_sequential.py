@@ -2,6 +2,11 @@ import tensorflow as tf
 
 mnist=tf.keras.datasets.mnist
 (x_train,y_train),(x_test,y_test)=mnist.load_data()
+'''
+对输入网络的输入特征进行归一化：
+使原本0到255之间的灰度值，变成0到1之间的数值；
+把输入特征的数值变小更适合神经网络吸收
+'''
 x_train,x_test=x_train/255.0,x_test/255.0
 
 model=tf.keras.models.Sequential([
