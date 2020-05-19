@@ -4,6 +4,23 @@ import numpy as np
 from matplotlib import pyplot as plt
 from tensorflow.keras.layers import Conv2D,BatchNormalization,Activation,MaxPool2D,Dropout,Flatten,Dense
 from tensorflow.keras import Model
+'''
+
+5x5 conv, filters=6
+2x2 pool, strides=2
+C（核：6*5*5，步长：1，填充：same ）
+B（Yes）
+A（relu）
+P（max，核：2*2，步长：2，填充：same）
+D（0.2）
+--------------------------------------------------
+Dense 128
+Dense 10
+Flatten
+Dense（神经元：128，激活：relu，Dropout：0.2）
+Dense（神经元：10，激活：softmax）
+'''
+
 
 np.set_printoptions(threshold=np.inf)
 
